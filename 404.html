@@ -5,14 +5,13 @@
     <title>투명 OLED</title>
     <script>
       // GitHub Pages SPA 리다이렉트
-      // 경로를 쿼리 파라미터로 변환하여 index.html로 전달
-      var segmentCount = 1; // basename depth (/oled-app = 1)
+      var pathSegmentsToKeep = 1; // basename depth (/oled-app = 1)
       var l = window.location;
       l.replace(
         l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
-        l.pathname.split('/').slice(0, 1 + segmentCount).join('/') + '/?p=/' +
-        l.pathname.split('/').slice(1 + segmentCount).join('/').replace(/&/g, '~and~') +
-        (l.search ? '&q=' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+        l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
+        l.pathname.split('/').slice(1 + pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
+        (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
         l.hash
       );
     </script>
